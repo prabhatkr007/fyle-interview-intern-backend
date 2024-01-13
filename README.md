@@ -1,56 +1,91 @@
 # Fyle Backend Challenge
+## Table of Contents
 
-## Who is this for?
-
-This challenge is meant for candidates who wish to intern at Fyle and work with our engineering team. You should be able to commit to at least 6 months of dedicated time for internship.
-
-## Why work at Fyle?
-
-Fyle is a fast-growing Expense Management SaaS product. We are ~40 strong engineering team at the moment. 
-
-We are an extremely transparent organization. Check out our [careers page](https://careers.fylehq.com) that will give you a glimpse of what it is like to work at Fyle. Also, check out our Glassdoor reviews [here](https://www.glassdoor.co.in/Reviews/Fyle-Reviews-E1723235.htm). You can read stories from our teammates [here](https://stories.fylehq.com).
-
-
-## Challenge outline
-
-This challenge involves writing a backend service for a classroom. The challenge is described in detail [here](./Application.md)
-
-
-## What happens next?
-
-You will hear back within 48 hours from us via email. 
-
+- [Installation](#installation)
+  - [Clone Repository](#1-clone-repository)
+  - [Setup Virtual Environment](#2-setup-virtual-environment)
+  - [Install Requirements](#3-install-requirements)
+  - [Reset Database](#4-Reset-Database)
+- [Usage](#usage)
+  - [Running the Server](#running-the-server)
+  - [Running Tests](#running-tests)
+- [Docker Installation](#docker-installation)
+    - [Build Docker Image](#1-build-docker-image)
+    - [Run Docker Container](#2-run-docker-container)
+- [Docker Compose](#docker-compose)
+    - [Build and Run with Docker Compose](#1-build-and-run-with-docker-compose)
+    - [Stop Docker Compose](#2-stop-docker-compose)
 
 ## Installation
 
-1. Fork this repository to your github account
-2. Clone the forked repository and proceed with steps mentioned below
+### 1. Clone Repository
 
-### Install requirements
-
+```bash
+git clone fyle-interview-intern-backend.git
+cd fyle-interview-intern-backend
 ```
+
+### 2. Setup Virtual Environment
+
+```bash
 virtualenv env --python=python3.8
 source env/bin/activate
+```
+
+### 3. Install Requirements
+```bash
 pip install -r requirements.txt
 ```
-### Reset DB
 
-```
+### 4. Reset Database
+```bash
 export FLASK_APP=core/server.py
 rm core/store.sqlite3
 flask db upgrade -d core/migrations/
 ```
-### Start Server
 
-```
+## Usage
+
+### Running the Server
+```bash
 bash run.sh
 ```
-### Run Tests
+The server will be accessible at http://localhost:7755.
 
-```
+### Running Tests
+
+```bash
 pytest -vvv -s tests/
 
 # for test coverage report
 # pytest --cov
 # open htmlcov/index.html
+```
+Note - Reset DB before running the Tests
+
+
+## Docker Installation
+
+### 1. Build Docker Image
+
+```bash
+sudo docker build -t fyle-backend-challenge:latest .
+```
+### 2. Run Docker Container
+```bash
+sudo docker run -p 7755:7755 fyle-backend-challenge:latest
+```
+## Docker Compose
+
+### 1. Build and Run with Docker Compose
+
+```bash
+sudo docker-compose up -d
+```
+The server will be accessible at http://localhost:7755.
+
+### 2. Stop Docker Compose
+
+```bash
+sudo docker-compose down
 ```
