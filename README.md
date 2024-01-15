@@ -1,4 +1,9 @@
 # Fyle Backend Challenge
+
+## Challenge outline
+
+This challenge involves writing a backend service for a classroom. The challenge is described in detail [here](./Application.md)
+
 ## Table of Contents
 
 - [Installation](#installation)
